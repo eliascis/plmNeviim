@@ -25,7 +25,9 @@ a data frame with fitted / predicted values
 blup
 }
 \details{
-...
+plmNeviim, or plm Prophets creates out of sample predicitons based on Panel Data estimates.
+Original estimate coefficients are used be to create predicted values of outcomes using
+the original dataset or a new dataset with equal column names.
 }
 \note{
 Blup

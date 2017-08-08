@@ -6,7 +6,9 @@
 #' @param pname the predicted outcome name. Defalt is "y",
 #' @param levelconstr logical, if true a estimation of a logarithmic outcome is assumed and the level outcome is additonally created
 #' @details
-#' ...
+#' plmNeviim, or plm Prophets creates out of sample predicitons based on Panel Data estimates.
+#' Original estimate coefficients are used be to create predicted values of outcomes using
+#' the original dataset or a new dataset with equal column names.
 #' @return a data frame with fitted / predicted values
 #' @author Elías Cisneros <ec@elias-cisneros.de>
 #' @importFrom stats lm
