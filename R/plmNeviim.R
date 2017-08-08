@@ -1,4 +1,4 @@
-#' @title Out of Sample Prediciton of Panel Data Estiamtions
+#' @title Out of Sample Prediction of Panel Data Estimations
 #' @description blup
 #' @param estimate a plm object,
 #' @param data a data.frame to use for the outcome predictions,

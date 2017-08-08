@@ -2,7 +2,7 @@
 % Please edit documentation in R/plmNeviim.R
 \name{prophecy.plm.out}
 \alias{prophecy.plm.out}
-\title{Out of Sample Prediciton of Panel Data Estiamtions}
+\title{Out of Sample Prediction of Panel Data Estimations}
 \usage{
 prophecy.plm.out(estimate, data, pindex = NULL, pname = "y",
   levelconstr = T)
