@@ -1,13 +1,13 @@
-Package: plmNavi
+Package: plmNeviim
 Type: Package
 Title: Out of sample prediction and scenarios of Panel Data estimations
 Date: 2017-08-08
 Version: 0.1.0
 Author: El\'{i}as Cisneros <ec@elias-cisneros.de>
 Maintainer: Elias Cisneros <ec@elias-cisneros.de>
-Description: plmNavi, or plm Prophet creates out of sample prediciton based on Panel Data estimates. 
-    Estimates can be left as are or manipulated in order to create predicted values of outcomes using the original dataset or 
-    a new dataset. 
+Description: plmNeviim, or plm Prophets creates out of sample predicitons based on Panel Data estimates. 
+    Original estimate coefficients can be used or modified to create predicted values of outcomes using the original dataset or 
+    a new dataset with equal column names. 
 License: GPL-2
 Imports: stats, plm, spd4testing
 Remotes: eliascis/spd4testing
