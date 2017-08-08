@@ -1,6 +1,6 @@
 Package: plmNeviim
 Type: Package
-Title: Out of sample prediction and scenarios of Panel Data estimations
+Title: Out of Sample Prediction and Scenarios of Panel Data estimations
 Date: 2017-08-08
 Version: 0.1.0
 Author: El\'{i}as Cisneros <ec@elias-cisneros.de>

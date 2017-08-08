@@ -15,6 +15,7 @@
 #' @importFrom stats coef
 #' @importFrom stats aggregate
 #' @importFrom utils head
+#' @example man/eg.plmNeviim.R
 #' @seealso \code{\link{plm}}
 #' @references
 #' \url{https://rdrr.io/rforge/plm/src/R/plm.R} \cr

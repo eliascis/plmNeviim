@@ -4,10 +4,10 @@ library(plmNeviim)
 library(spd4testing)
 
 #data
-d<-spd4testing(missingX=T)
+d<-spd4testing(missingX=TRUE)
 d
 #new data
-o<-spd4testing(missingX=F)
+o<-spd4testing(missingX=FALSE)
 o
 
 #formula
@@ -26,14 +26,14 @@ c(pmodel.response(e)-residuals(e)) #(shows row names)
 
 ##prediciton with plmNeviim
 #fitted values
-x<-prophecy.plm.out(estimate=e,data=d,pindex=c("id","year"),levelconstr=F)
+x<-prophecy.plm.out(estimate=e,data=d,pindex=c("id","year"),levelconstr=FALSE)
 x$y.t.hat
 #level construct
-x<-prophecy.plm.out(estimate=e,data=d,pindex=c("id","year"),levelconstr=T)
+x<-prophecy.plm.out(estimate=e,data=d,pindex=c("id","year"),levelconstr=TRUE)
 x[,c("id","year","y.l","y.t.hat","y.l.hat")]
 
 #out of sample prediciton
-x<-prophecy.plm.out(estimate=e,data=o,pindex=c("id","year"),levelconstr=T)
+x<-prophecy.plm.out(estimate=e,data=o,pindex=c("id","year"),levelconstr=TRUE)
 x[,c("id","year","y.l","y.t.hat","y.l.hat")]
 
 
@@ -42,7 +42,7 @@ x[,c("id","year","y.l","y.t.hat","y.l.hat")]
 predict(e,newdata=d)
 predict(e,newdata=dn)
 # Error in crossprod(beta, t(X)) : non-conformable arguments
-# if plm omits variables specified in the formula (e.g. one year in factor(year))
+# Whenever plm omits variables specified in the formula (e.g. base year in factor(year))
 # it tries to multiply two matrices with different length of columns than regressors
 # the new funciton avoids this and therefore is able to apply out of sample predicitons
 # predict.out.plm(e,f,dn,"fd")
