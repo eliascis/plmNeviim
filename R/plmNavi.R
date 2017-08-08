@@ -16,7 +16,7 @@
 #' @import plm
 #' @note Blup
 #' @export
-
+###
 
 plmNavi<-function(
   estimate,
