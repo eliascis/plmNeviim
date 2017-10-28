@@ -5,7 +5,14 @@ library(spd4testing)
 
 #data
 d<-spd4testing(missingX=TRUE)
-d
+i<-which(
+  (d$id==1 & d$year==2001)|
+    (d$id==2 & d$year<=2002)
+)
+i
+d<-d[-i,]
+
+#test
 #new data
 o<-spd4testing(missingX=FALSE)
 o

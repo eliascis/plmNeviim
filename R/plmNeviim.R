@@ -36,14 +36,15 @@ prophecy.plm.out<-function(
   data,
   pindex=NULL,
   pname="y",
-  levelconstr=T
+  levelconstr=T,
+  add.model.matrix=F
 ){
   # estimate=e
   # data=d
   # pname="y"
   # pindex=c("id","year")
   # levelconstr=T
-
+  # add.model.matrix=F
 
   ##setup
   formula<-estimate$formula
@@ -121,7 +122,9 @@ prophecy.plm.out<-function(
     nd<-merge(od,ms,by="rowid",all.x=T)
 
     #merge with model matrix
-    nd<-merge(nd,mx,by="rowid",all.x=T)
+    if (add.model.matrix==T){
+      nd<-merge(nd,mx,by="rowid",all.x=T)
+    }
 
     #merge with prediciton
     nd<-merge(nd,p,by="rowid",all.x=T)
@@ -132,22 +135,26 @@ prophecy.plm.out<-function(
 
     #construct predicted level outcome for FD estiamtions
     if (model=="fd"){
+
+      #running n within goups
+      nd$n<-ave(nd$rowid,nd[,pindex[1]],FUN=seq_along)
+      nd$N<-ave(nd$rowid,nd[,pindex[1]],FUN=length)
+
       #first observation from real data
-      i<-which(is.na(nd[,y.t.hat])) #start index
       nd[i,y.l.hat]<-NA
-      nd[i,y.l.hat]<-nd[i,y.l]
-      #fill values over all years
-      ylist<-unique(nd[-i,pindex[2]])
-      ylist<-as.integer(as.character(ylist))
-      for (y in ylist){
-        # y<-2004
-        # print(y)
-        v.lag<-nd[nd[,pindex[2]]==(y-1),y.l.hat]
-        v.dif<-nd[nd[,pindex[2]]==(y  ),y.t.hat]
+      nd[nd$n==1,y.l.hat]<-nd[nd$n==1,y.l]
+      #following observations
+      for (y in 2:max(nd$n)){
+        print(y)
+        v.lag<-nd[nd$n==(y-1) & y<=nd$N,y.l.hat]
+        v.dif<-nd[nd$n==(y  ) & y<=nd$N,y.t.hat]
         # print(length(v))
         # print(length(v.lag))
-        nd[nd[,pindex[2]]==y    ,y.l.hat] <- v.lag + v.dif
+        nd[nd$n==y & y<=nd$N ,y.l.hat] <- v.lag + v.dif
       }
+      #remove count vars
+      nd$n<-NULL
+      nd$N<-NULL
     }
     if (model=="within"){
       #group means of outcome
