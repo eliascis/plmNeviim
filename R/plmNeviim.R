@@ -135,11 +135,9 @@ prophecy.plm.out<-function(
 
     #construct predicted level outcome for FD estiamtions
     if (model=="fd"){
-
       #running n within goups
       nd$n<-ave(nd$rowid,nd[,pindex[1]],FUN=seq_along)
       nd$N<-ave(nd$rowid,nd[,pindex[1]],FUN=length)
-
       #first observation from real data
       nd[i,y.l.hat]<-NA
       nd[nd$n==1,y.l.hat]<-nd[nd$n==1,y.l]
