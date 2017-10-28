@@ -5,7 +5,7 @@
 \title{Out of Sample Prediction of Panel Data Estimations}
 \usage{
 prophecy.plm.out(estimate, data, pindex = NULL, pname = "y",
-  levelconstr = T)
+  levelconstr = T, add.model.matrix = F)
 }
 \arguments{
 \item{estimate}{a plm object,}
@@ -40,7 +40,14 @@ library(spd4testing)
 
 #data
 d<-spd4testing(missingX=TRUE)
-d
+i<-which(
+  (d$id==1 & d$year==2001)|
+    (d$id==2 & d$year<=2002)
+)
+i
+d<-d[-i,]
+
+#test
 #new data
 o<-spd4testing(missingX=FALSE)
 o
