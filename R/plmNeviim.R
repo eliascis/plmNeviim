@@ -39,12 +39,12 @@ prophecy.plm.out<-function(
   levelconstr=T,
   add.model.matrix=F
 ){
-  estimate=e
-  data=d
-  pname="y"
-  pindex=c("id","year")
-  levelconstr=T
-  add.model.matrix=F
+  # estimate=e
+  # data=d
+  # pname="y"
+  # pindex=c("id","year")
+  # levelconstr=T
+  # add.model.matrix=F
 
   ##setup
   formula<-estimate$formula
