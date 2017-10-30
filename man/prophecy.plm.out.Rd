@@ -39,13 +39,8 @@ library(plmNeviim)
 library(spd4testing)
 
 #data
-d<-spd4testing(missingX=TRUE)
-i<-which(
-  (d$id==1 & d$year==2001)|
-    (d$id==2 & d$year<=2002)
-)
-i
-d<-d[-i,]
+d<-spd4testing(missingX=T,missingY=T,missing.pre.years=T)
+d
 
 #test
 #new data

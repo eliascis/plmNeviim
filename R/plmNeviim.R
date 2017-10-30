@@ -39,12 +39,12 @@ prophecy.plm.out<-function(
   levelconstr=T,
   add.model.matrix=F
 ){
-  # estimate=e
-  # data=d
-  # pname="y"
-  # pindex=c("id","year")
-  # levelconstr=T
-  # add.model.matrix=F
+  estimate=e
+  data=d
+  pname="y"
+  pindex=c("id","year")
+  levelconstr=T
+  add.model.matrix=F
 
   ##setup
   formula<-estimate$formula
@@ -139,7 +139,7 @@ prophecy.plm.out<-function(
       nd$n<-ave(nd$rowid,nd[,pindex[1]],FUN=seq_along)
       nd$N<-ave(nd$rowid,nd[,pindex[1]],FUN=length)
       #first observation from real data
-      nd[i,y.l.hat]<-NA
+      nd[,y.l.hat]<-NA
       nd[nd$n==1,y.l.hat]<-nd[nd$n==1,y.l]
       #following observations
       for (y in 2:max(nd$n)){

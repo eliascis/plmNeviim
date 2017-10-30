@@ -4,13 +4,9 @@ library(plmNeviim)
 library(spd4testing)
 
 #data
-d<-spd4testing(missingX=TRUE)
-i<-which(
-  (d$id==1 & d$year==2001)|
-    (d$id==2 & d$year<=2002)
-)
-i
-d<-d[-i,]
+d<-spd4testing(missingX=F,missingY=F,missing.pre.years=T)
+d<-spd4testing(missingX=F,missingY=F,missing.pre.years=T)
+d
 
 #test
 #new data
@@ -38,7 +34,8 @@ x$y.t.hat
 #level construct
 x<-prophecy.plm.out(estimate=e,data=d,pindex=c("id","year"),levelconstr=TRUE)
 x[,c("id","year","y.l","y.t.hat","y.l.hat")]
-
+m<-merge(d,x,by=c("id","year"),all.x=T)
+m[,c("id","year","y","y.l","y.t","y.t.hat","y.l.hat")]
 #out of sample prediciton
 x<-prophecy.plm.out(estimate=e,data=o,pindex=c("id","year"),levelconstr=TRUE)
 x[,c("id","year","y.l","y.t.hat","y.l.hat")]
